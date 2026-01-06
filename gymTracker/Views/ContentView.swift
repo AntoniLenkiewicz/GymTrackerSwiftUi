@@ -10,20 +10,23 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var tracker = GymTracker()
     @State private var selectedTab = 0
-    let tabs = ["Workout", "History"]
-    let tabIcons = ["dumbbell.fill", "clock.arrow.trianglehead.counterclockwise.rotate.90"]
+    let tabs = ["Home", "Workout", "History"]
+    let tabIcons = ["house.fill","dumbbell.fill", "clock.arrow.trianglehead.counterclockwise.rotate.90"]
     var body: some View {
         VStack{
             switch selectedTab {
             case 0:
-                WorkoutView()
+                HomeView()
                     .environmentObject(tracker)
             case 1:
+                WorkoutView()
+                    .environmentObject(tracker)
+            case 2:
                 PreviousWorkoutView()
                     .environmentObject(tracker)
                 Spacer()
             default:
-                WorkoutView()
+                HomeView()
                     .environmentObject(tracker)
             }
             HStack(spacing: 30){

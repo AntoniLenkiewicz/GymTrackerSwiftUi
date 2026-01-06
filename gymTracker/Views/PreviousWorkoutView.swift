@@ -10,9 +10,17 @@ import SwiftUI
 struct PreviousWorkoutView: View {
     @EnvironmentObject var tracker: GymTracker
     var body: some View {
-        VStack{
-            ForEach(tracker.workouts, id: \.self) {workoutType in
-                PreviousWorkoutCardView(workoutType: workoutType)
+        NavigationStack{
+            ScrollView{
+                ForEach(tracker.workouts, id: \.self) {workoutType in
+                    NavigationLink(value: workoutType) {
+                        PreviousWorkoutCardView(workoutType: workoutType)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .navigationDestination(for: WorkoutType.self) { workoutType in
+                PreviousWorkoutEntriesView(workoutType: workoutType)
             }
         }
     }

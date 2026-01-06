@@ -11,7 +11,7 @@ internal import Combine
 
 class GymTracker: ObservableObject {
     @Published var workouts = [WorkoutType]()
-    @Published var workOutEntries = [WorkoutEntry]()
+    @Published var workoutEntries = [WorkoutEntry]()
     
     func createEmptyWorkoutEntry(workoutType: WorkoutType) -> WorkoutEntry {
         var exerciseList = [Exercise]()
@@ -23,6 +23,6 @@ class GymTracker: ObservableObject {
         return workoutEntry
     }
     func saveWorkoutEntry(workoutEntry: WorkoutEntry) {
-        workOutEntries.append(workoutEntry)
+        workoutEntries.append(workoutEntry)
     }
 }

@@ -1,0 +1,40 @@
+//
+//  PreviousWorkoutEntryCardView.swift
+//  gymTracker
+//
+//  Created by Antoni Lenkiewicz on 06/01/2026.
+//
+
+import SwiftUI
+
+struct PreviousWorkoutEntryCardView: View {
+    let workoutEntry: WorkoutEntry
+    var body: some View {
+        VStack{
+            HStack{
+                Text("Workout on \(workoutEntry.date, style: .date)")
+                Spacer()
+            }
+            ForEach(workoutEntry.exercises, id: \.self) {exercise in
+                HStack{
+                    Text("\(exercise.name)")
+                    Spacer()
+                }
+                ForEach(exercise.sets, id: \.self) {set in
+                    HStack{
+                        Text("\(set.reps) reps of \(set.weight) KG")
+                        Spacer()
+                    }
+                }
+            }
+        }
+    }
+}
+
+#Preview {
+    let set = SetDetails(weight: 12.5, reps: 10)
+    let exercise = [Exercise(name: "Bicep curls", sets: [set, set])]
+    let workoutType = WorkoutType(name: "Upper body", exercises: ["Bicep curls"])
+    let workoutEntry = WorkoutEntry(workoutType: workoutType, date: Date() ,exercises: exercise)
+    PreviousWorkoutEntryCardView(workoutEntry: workoutEntry)
+}

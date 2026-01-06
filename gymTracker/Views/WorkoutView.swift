@@ -13,11 +13,6 @@ struct WorkoutView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                HStack{
-                    Text("Start Workout")
-                        .font(.headline)
-                    Spacer()
-                }
                 ForEach(tracker.workouts, id: \.self) {workout in
                     NavigationLink(value: workout){
                         WorkoutCardView(workout: workout)
@@ -25,7 +20,7 @@ struct WorkoutView: View {
                     .buttonStyle(.plain)
                 }
                 Spacer()
-                    .navigationTitle(Text("Gym Tracker"))
+                    .navigationTitle(Text("Start Workout"))
                     .toolbar {
                         Button{
                             showingAddWorkout = true
