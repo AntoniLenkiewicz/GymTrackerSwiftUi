@@ -22,7 +22,21 @@ class GymTracker: ObservableObject {
         let workoutEntry = WorkoutEntry(workoutType: workoutType, date: Date(), exercises: exerciseList)
         return workoutEntry
     }
+    
     func saveWorkoutEntry(workoutEntry: WorkoutEntry) {
         workoutEntries.append(workoutEntry)
     }
+    
+    func getTotalWeightLifted(workoutEntries: [WorkoutEntry]) -> Float {
+        var totalWeight: Float = 0.0;
+        for entry in workoutEntries {
+            for exercise in entry.exercises {
+                for set in exercise.sets {
+                    totalWeight += (set.weight * Float(set.reps))
+                }
+            }
+        }
+        return totalWeight;
+    }
+        
 }

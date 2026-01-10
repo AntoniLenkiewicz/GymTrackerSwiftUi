@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var tracker: GymTracker
     @Environment(\.colorScheme) var colorScheme
+    @State var weightLifted: Float = 0.0
     var body: some View {
         NavigationStack{
             VStack{
@@ -18,11 +19,22 @@ struct HomeView: View {
                         .font(.headline)
                     Spacer()
                 }
+                
                 HStack{
                     Text("Total weight lifted across all sessions")
                         .font(.headline)
                     Spacer()
                 }
+                .onAppear {
+                    weightLifted = tracker.getTotalWeightLifted(workoutEntries: tracker.workoutEntries)
+                }
+                
+                HStack{
+                    Text("\(weightLifted, format: .number.precision(.fractionLength(0...2))) kg")
+                        .font(.headline)
+                    Spacer()
+                }
+                
                 HStack{
                     Text("Most recent Workout Stats")
                         .font(.headline)

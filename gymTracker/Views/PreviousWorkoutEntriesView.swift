@@ -13,7 +13,6 @@ struct PreviousWorkoutEntriesView: View {
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ScrollView{
-            Text("\(workoutType.name)")
             ForEach(tracker.workoutEntries) {workoutEntry in
                 if workoutEntry.workoutType.name == workoutType.name {
                     PreviousWorkoutEntryCardView(workoutEntry: workoutEntry)

@@ -16,9 +16,14 @@ struct PreviousWorkoutCardView: View {
                     .font(.largeTitle)
                 Spacer()
             }
+            Divider()
             ForEach(workoutType.exercises, id: \.self) {exercise in
-                Text("\(exercise)")
+                HStack{
+                    Text("\(exercise)")
+                    Spacer()
+                }
             }
+            Divider()
         }
         .padding(15)
     }
