@@ -13,6 +13,12 @@ class GymTracker: ObservableObject {
     @Published var workouts = [WorkoutType]()
     @Published var workoutEntries = [WorkoutEntry]()
     
+     private let workoutDataManager = WorkoutDataManager()
+    
+    init(){
+        loadWorkouts()
+    }
+    
     func createEmptyWorkoutEntry(workoutType: WorkoutType) -> WorkoutEntry {
         var exerciseList = [Exercise]()
         for exercise in workoutType.exercises {
@@ -25,6 +31,16 @@ class GymTracker: ObservableObject {
     
     func saveWorkoutEntry(workoutEntry: WorkoutEntry) {
         workoutEntries.append(workoutEntry)
+        workoutDataManager.save(workouts: workoutEntries)
+    }
+    
+    func loadWorkouts() {
+        workoutEntries = workoutDataManager.load()
+        for i in workoutEntries {
+            if !(workouts.contains(i.workoutType)) {
+                workouts.append(i.workoutType)
+            }
+        }
     }
     
     func getTotalWeightLifted(workoutEntries: [WorkoutEntry]) -> Float {

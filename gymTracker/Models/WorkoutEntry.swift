@@ -8,8 +8,15 @@
 import Foundation
 
 struct WorkoutEntry: Codable, Identifiable, Hashable {
-    let id = UUID()
+    let id: UUID
     let workoutType: WorkoutType
     let date: Date
     var exercises: [Exercise]
+    
+    init(id: UUID = UUID(), workoutType: WorkoutType, date: Date, exercises: [Exercise] = []) {
+        self.id = id
+        self.workoutType = workoutType
+        self.date = date
+        self.exercises = exercises
+    }
 }
