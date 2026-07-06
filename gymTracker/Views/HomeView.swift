@@ -40,6 +40,7 @@ struct HomeView: View {
                         .font(.headline)
                     Spacer()
                 }
+                PreviousWorkoutEntryCardView(workoutEntry: tracker.workoutEntries.last!)
                 Spacer()
             }
             .navigationTitle(Text("Gym Tracker"))

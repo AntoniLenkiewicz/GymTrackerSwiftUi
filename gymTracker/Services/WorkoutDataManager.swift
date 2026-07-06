@@ -19,6 +19,7 @@ class WorkoutDataManager {
             print(error.localizedDescription)
       }
     }
+    
     func load() -> [WorkoutEntry] {
         let jsonUrl = URL.documentsDirectory.appending(path: "workouts.json")
         if FileManager.default.fileExists(atPath: jsonUrl.path) {

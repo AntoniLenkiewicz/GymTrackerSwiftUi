@@ -24,6 +24,7 @@ struct WorkoutCardView: View {
                     .padding(.horizontal, 15)
                 Spacer()
             }
+            Divider()
             HStack{
                 Text("\(exerciseList)")
                     .font(.subheadline)
