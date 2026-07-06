@@ -19,7 +19,7 @@ Clone the repo and build the application using X-Code
 
 ## Screenshots
 <div>
-  <img src="images/homepage.png" alt="Screenshot" width="300">
-  <img src="images/pastworkouts.png" alt="Screenshot" width="300">
-  <img src="images/trackingWorkout.png" alt="Screenshot" width="300">
+  <img src="images/homepage.png" alt="Screenshot" width="200">
+  <img src="images/pastworkouts.png" alt="Screenshot" width="200">
+  <img src="images/trackingWorkout.png" alt="Screenshot" width="200">
 </div>
